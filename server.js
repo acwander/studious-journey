@@ -3,6 +3,7 @@
 //============
 const express = require("express");
 const app = express();
+const mongoose = require("mongoose")
 
 //===========
 //MIDDLEWARE
@@ -10,12 +11,16 @@ const app = express();
 app.use(express.json());
 app.use(express.static("public"));
 
+//=========
+//ROUTERS
+//==========
+const booksController = require('./controllers/books.js');
+app.use('/books', booksController);
+
 //==========
 //ROOT ROUTE
 //==========
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+
 
 //============
 //LISTENER
