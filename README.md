@@ -1,5 +1,6 @@
 # studious-journey
 
-##Collaborators
+## Collaborators
 
 - Blake Douglass
+- Josh Soave
