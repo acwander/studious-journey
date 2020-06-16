@@ -10,6 +10,14 @@ const mongoose = require("mongoose")
 //===========
 app.use(express.json());
 app.use(express.static("public"));
+app.use(express.urlencoded({extended: false}))
+//===========
+//MONGOOSE
+//===========
+mongoose.connect('mongodb://localhost:27017/books', {useNewUrlParse: true, useUnifiedTopology: true})
+mongoose.connection.once('open', () => {
+    console.log('connected to mongodb...');
+})
 
 //=========
 //ROUTERS
