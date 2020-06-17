@@ -3,20 +3,43 @@ const app = angular.module("BooksApp", []);
 app.controller("MainController", [
   "$http",
   function ($http) {
-    this.newBook = {};
+    this.hello = "Hello World!";
+    this.books = [];
+    this.updatedBook = {};
 
-    // CREATE
-    this.createBook = () => {
+    //=====
+    //Read
+    //====
+    this.getBooks = () => {
       $http({
-        method: "POST",
+        method: "GET",
         url: "/books",
-        data: this.newBook,
       }).then(
-        (res) => {
-          this.newBook = {};
+        (response) => {
+          this.books = reponse.data;
         },
         (err) => {
-          console.log(err);
+          console.log(err.message);
+        }
+      );
+    };
+
+    //=======
+    //Update
+    //=======
+
+    this.editBook = (book) => {
+      $http({
+        method: "PUT",
+        url: "/books/" + book_.id,
+        data: this.updatedBook,
+      }).then(
+        (response) => {
+          this.updatedBook = {};
+          this.getBooks();
+        },
+        (err) => {
+          console.log(err.message);
         }
       );
     };
