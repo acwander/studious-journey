@@ -28,6 +28,9 @@
     <div class="books">
       <div class="book" ng-repeat="book in ctrl.books">
         <h1>{{book.title}}</h1>
+        <h2>{{book.author}}</h2>
+        <img src="{{book.image}}">
+        <p>{{book.summary}}</p>
         <button ng-click="ctrl.deleteBook(book)">X</button>
       </div>
     </div>
