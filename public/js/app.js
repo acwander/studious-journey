@@ -7,7 +7,8 @@ app.controller("MainController", [
     this.books = [];
     this.updatedBook = {};
     this.newBook = {};
-
+    this.showForm = false;
+    this.indexOfShowForm = null;
 
     ///////////////////
     // CREATE

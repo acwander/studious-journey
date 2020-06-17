@@ -27,22 +27,27 @@
     </form>
     <div class="books">
       <div class="book" ng-repeat="book in ctrl.books">
-        <h1>{{book.title}}</h1>
-        <h2>{{book.author}}</h2>
-        <img src="{{book.image}}">
-        <p>{{book.summary}}</p>
+          <h1>{{book.title}}</h1>
+          <h2>{{book.author}}</h2>
+          <img src="{{book.image}}">
+          <p>{{book.summary}}</p>
+        <a href="#" ng-click="ctrl.indexOfShowForm = $index" ng-if="$index !== ctrl.indexOfShowForm"> Edit Book</a>
+
         <button ng-click="ctrl.deleteBook(book)">X</button>
-            <form ng-submit="ctrl.editBook(book)">
-              <input type="text" ng-model="ctrl.updatedBook.title" placeholder="Title" />
-              <input type="text" ng-model="ctrl.updatedBook.author" placeholder="Author" />
-              <input type="text" ng-model="ctrl.updatedBook.image" placeholder="Image" />
-              <input
-                type="text"
-                ng-model="ctrl.updatedBook.summary"
-                placeholder="Summary"
-              />
-              <input type="submit" value="Edit Book" />
-            </form>
+
+        <div class="edit-form" ng-if="$index === ctrl.indexOfShowForm">
+          <form ng-submit="ctrl.editBook(book)">
+            <input type="text" ng-model="ctrl.updatedBook.title" ng-value="book.title"/>
+            <input type="text" ng-model="ctrl.updatedBook.author" placeholder="Author" ng-value="book.author"/>
+            <input type="text" ng-model="ctrl.updatedBook.image" placeholder="Image" ng-value="book.image"/>
+            <input
+              type="text"
+              ng-model="ctrl.updatedBook.summary"
+              placeholder="Summary" ng-value="book.summary"
+            />
+            <input type="submit" value="Edit Book" />
+          </form>
+        </div>
       </div>
     </div>
   </body>
