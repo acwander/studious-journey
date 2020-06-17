@@ -53,7 +53,7 @@ app.controller("MainController", [
     this.editBook = (book) => {
       $http({
         method: "PUT",
-        url: "/books/" + book_.id,
+        url: "/books/" + book._id,
         data: this.updatedBook,
       }).then(
         (response) => {

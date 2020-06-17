@@ -32,6 +32,17 @@
         <img src="{{book.image}}">
         <p>{{book.summary}}</p>
         <button ng-click="ctrl.deleteBook(book)">X</button>
+            <form ng-submit="ctrl.editBook(book)">
+              <input type="text" ng-model="ctrl.updatedBook.title" placeholder="Title" />
+              <input type="text" ng-model="ctrl.updatedBook.author" placeholder="Author" />
+              <input type="text" ng-model="ctrl.updatedBook.image" placeholder="Image" />
+              <input
+                type="text"
+                ng-model="ctrl.updatedBook.summary"
+                placeholder="Summary"
+              />
+              <input type="submit" value="Edit Book" />
+            </form>
       </div>
     </div>
   </body>
