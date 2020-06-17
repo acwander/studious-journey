@@ -25,6 +25,11 @@
       />
       <input type="submit" value="Create Book" />
     </form>
-    <button ng-click="ctrl.deleteBook(book)">X</button>
+    <div class="books">
+      <div class="book" ng-repeat="book in ctrl.books">
+        <h1>{{book.title}}</h1>
+        <button ng-click="ctrl.deleteBook(book)">X</button>
+      </div>
+    </div>
   </body>
 </html>
