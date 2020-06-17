@@ -7,10 +7,30 @@ app.controller("MainController", [
     this.books = [];
     this.updatedBook = {};
 
+
+    ///////////////////
+    // CREATE
+    ///////////////////
+    this.createBook = () => {
+      $http({
+        method: "POST",
+        url: "/books",
+        data: this.newBook,
+      }).then(
+        (res) => {
+          this.newBook = {};
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    };
+
     //=====
     //Read
     //====
     this.getBooks = () => {
+
       $http({
         method: "GET",
         url: "/books",
