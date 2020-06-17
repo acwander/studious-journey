@@ -33,7 +33,6 @@ app.controller("MainController", [
     //Read
     //====
     this.getBooks = () => {
-
       $http({
         method: "GET",
         url: "/books",
@@ -58,6 +57,7 @@ app.controller("MainController", [
         data: this.updatedBook,
       }).then(
         (response) => {
+          this.indexOfShowForm = null;
           this.updatedBook = {};
           this.getBooks();
         },
@@ -68,21 +68,18 @@ app.controller("MainController", [
     };
     //DELETE
     this.deleteBook = (book) => {
-      $http(
-        {
-          method: 'DELETE',
-          url: '/books/' + book._id
-        }
-      ).then(
+      $http({
+        method: "DELETE",
+        url: "/books/" + book._id,
+      }).then(
         (response) => {
           this.getBooks();
         },
         (error) => {
           console.log(error);
         }
-      )
-    }
+      );
+    };
     this.getBooks();
   },
-
 ]);

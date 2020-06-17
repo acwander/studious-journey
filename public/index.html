@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="css/app.css" />
   </head>
   <body ng-controller="MainController as ctrl">
-    <h1>Books App</h1>
+    <h1 class="books-app-title">Books App</h1>
 
-    <form ng-submit="ctrl.createBook()">
+    <form ng-submit="ctrl.createBook()" class="create-book-form">
       <input type="text" ng-model="ctrl.newBook.title" placeholder="Title" />
       <input type="text" ng-model="ctrl.newBook.author" placeholder="Author" />
       <input type="text" ng-model="ctrl.newBook.image" placeholder="Image" />
@@ -27,23 +27,45 @@
     </form>
     <div class="books">
       <div class="book" ng-repeat="book in ctrl.books">
-          <h1>{{book.title}}</h1>
-          <h2>{{book.author}}</h2>
-          <img src="{{book.image}}">
-          <p>{{book.summary}}</p>
-        <a href="#" ng-click="ctrl.indexOfShowForm = $index" ng-if="$index !== ctrl.indexOfShowForm"> Edit Book</a>
+        <img src="{{book.image}}" />
+
+        <h1>{{book.title}}</h1>
+        <h2>{{book.author}}</h2>
+        <p>{{book.summary}}</p>
+        <a
+          href=""
+          ng-click="ctrl.indexOfShowForm = $index"
+          ng-if="$index !== ctrl.indexOfShowForm"
+        >
+          Edit Book</a
+        >
 
         <button ng-click="ctrl.deleteBook(book)">X</button>
 
         <div class="edit-form" ng-if="$index === ctrl.indexOfShowForm">
           <form ng-submit="ctrl.editBook(book)">
-            <input type="text" ng-model="ctrl.updatedBook.title" ng-value="book.title"/>
-            <input type="text" ng-model="ctrl.updatedBook.author" placeholder="Author" ng-value="book.author"/>
-            <input type="text" ng-model="ctrl.updatedBook.image" placeholder="Image" ng-value="book.image"/>
+            <input
+              type="text"
+              ng-model="ctrl.updatedBook.title"
+              ng-value="book.title"
+            />
+            <input
+              type="text"
+              ng-model="ctrl.updatedBook.author"
+              placeholder="Author"
+              ng-value="book.author"
+            />
+            <input
+              type="text"
+              ng-model="ctrl.updatedBook.image"
+              placeholder="Image"
+              ng-value="book.image"
+            />
             <input
               type="text"
               ng-model="ctrl.updatedBook.summary"
-              placeholder="Summary" ng-value="book.summary"
+              placeholder="Summary"
+              ng-value="book.summary"
             />
             <input type="submit" value="Edit Book" />
           </form>
