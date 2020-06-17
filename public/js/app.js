@@ -6,7 +6,9 @@ app.controller("MainController", [
     this.hello = "Hello World!";
     this.books = [];
     this.updatedBook = {};
-
+    this.newBook = {};
+    this.showForm = false;
+    this.indexOfShowForm = null;
 
     ///////////////////
     // CREATE
@@ -19,6 +21,7 @@ app.controller("MainController", [
       }).then(
         (res) => {
           this.newBook = {};
+          this.getBooks();
         },
         (err) => {
           console.log(err);
@@ -36,7 +39,7 @@ app.controller("MainController", [
         url: "/books",
       }).then(
         (response) => {
-          this.books = reponse.data;
+          this.books = response.data;
         },
         (err) => {
           console.log(err.message);
@@ -51,7 +54,7 @@ app.controller("MainController", [
     this.editBook = (book) => {
       $http({
         method: "PUT",
-        url: "/books/" + book_.id,
+        url: "/books/" + book._id,
         data: this.updatedBook,
       }).then(
         (response) => {
@@ -64,21 +67,22 @@ app.controller("MainController", [
       );
     };
     //DELETE
-    this.deleteBook = function(book) {
+    this.deleteBook = (book) => {
       $http(
         {
           method: 'DELETE',
-          route: '/books/' + book._id
+          url: '/books/' + book._id
         }
       ).then(
-        function(response){
-          controller.getBooks();
+        (response) => {
+          this.getBooks();
         },
-        function(error){
+        (error) => {
           console.log(error);
         }
       )
     }
+    this.getBooks();
   },
 
 ]);
