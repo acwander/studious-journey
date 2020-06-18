@@ -1,26 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background: #ffdbe1;
+  background: #6092a6;
+  font-family: "Poppins", sans-serif;
 }
 
 .books-app-title {
   text-align: center;
+  margin: 2em;
+}
+
+.add-new-book-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #a65a49;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  line-height: 70px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.add-book-modal {
+  transition: all 1s ease;
 }
 
 .create-book-form {
-  width: 500px;
+  width: 300px;
   max-width: 90%;
   margin: 0 auto;
+  display: grid;
+  grid-gap: 1em;
+}
+
+input[type="text"],
+input[type="url"] {
+  padding: 0.25em;
+}
+
+.create-book-form input[type="submit"] {
+  width: 100px;
+  justify-self: end;
 }
 
 .books {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  justify-items: center;
   grid-gap: 2em;
   padding: 4em;
+  width: 100%;
+}
+
+.book {
+  background: #f2cbbd;
+  padding: 20px;
+  position: relative;
+}
+
+.book:hover .delete-btn,
+.book:hover a {
+  display: block;
+}
+
+.book * {
+  margin: 0 0 15px 0;
 }
 
 .book img {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
+  height: 200px;
+  margin: 15px auto;
+  display: block;
+}
+
+.book a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  background: white;
+  color: black;
+  padding: 10px;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 0%;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background: black;
+  color: white;
 }

@@ -12,37 +12,46 @@
     <link rel="stylesheet" href="css/app.css" />
   </head>
   <body ng-controller="MainController as ctrl">
+    <div class="add-new-book-btn" ng-click="ctrl.addNewBook = !ctrl.addNewBook">
+      +
+    </div>
     <h1 class="books-app-title">Books App</h1>
 
-    <form ng-submit="ctrl.createBook()" class="create-book-form">
-      <input type="text" ng-model="ctrl.newBook.title" placeholder="Title" />
-      <input type="text" ng-model="ctrl.newBook.author" placeholder="Author" />
-      <input type="text" ng-model="ctrl.newBook.image" placeholder="Image" />
-      <input
-        type="text"
-        ng-model="ctrl.newBook.summary"
-        placeholder="Summary"
-      />
-      <input type="submit" value="Create Book" />
-    </form>
+    <div class="add-book-modal" ng-if="ctrl.addNewBook">
+      <form ng-submit="ctrl.createBook()" class="create-book-form">
+        <input type="text" ng-model="ctrl.newBook.title" placeholder="Title" />
+        <input
+          type="text"
+          ng-model="ctrl.newBook.author"
+          placeholder="Author"
+        />
+        <input type="text" ng-model="ctrl.newBook.image" placeholder="Image" />
+        <input
+          type="text"
+          ng-model="ctrl.newBook.summary"
+          placeholder="Summary"
+        />
+        <input type="submit" value="Create Book" />
+      </form>
+    </div>
     <div class="books">
       <div class="book" ng-repeat="book in ctrl.books">
         <img src="{{book.image}}" />
 
-        <h1>{{book.title}}</h1>
-        <h2>{{book.author}}</h2>
+        <h2>{{book.title}}</h2>
+        <h3>{{book.author}}</h3>
         <p>{{book.summary}}</p>
         <a
           href=""
-          ng-click="ctrl.indexOfShowForm = $index"
-          ng-if="$index !== ctrl.indexOfShowForm"
+          ng-click="ctrl.indexOfShowEditForm = $index"
+          ng-if="$index !== ctrl.indexOfShowEditForm"
         >
           Edit Book</a
         >
 
-        <button ng-click="ctrl.deleteBook(book)">X</button>
+        <button ng-click="ctrl.deleteBook(book)" class="delete-btn">X</button>
 
-        <div class="edit-form" ng-if="$index === ctrl.indexOfShowForm">
+        <div class="edit-form" ng-if="$index === ctrl.indexOfShowEditForm">
           <form ng-submit="ctrl.editBook(book)">
             <input
               type="text"

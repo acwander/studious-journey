@@ -4,11 +4,12 @@ app.controller("MainController", [
   "$http",
   function ($http) {
     this.hello = "Hello World!";
+    this.addNewBook = false;
     this.books = [];
     this.updatedBook = {};
     this.newBook = {};
-    this.showForm = false;
-    this.indexOfShowForm = null;
+    // this.showEditForm = false;
+    this.indexOfShowEditForm = null;
 
     ///////////////////
     // CREATE
@@ -57,7 +58,7 @@ app.controller("MainController", [
         data: this.updatedBook,
       }).then(
         (response) => {
-          this.indexOfShowForm = null;
+          this.indexOfShowEditForm = null;
           this.updatedBook = {};
           this.getBooks();
         },
